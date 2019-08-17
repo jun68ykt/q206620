@@ -29,8 +29,11 @@ $(document).ready(function() {
 
       // Update footer
       $( api.column( 4 ).footer() ).html(
-        '$'+pageTotal +' ( $'+ total +' total)'
+        '$'+pageTotal
       );
+      $( api.table().footer() )
+        .find('.grand-total')
+        .text('$'+ total)
     }
   } );
 } );
