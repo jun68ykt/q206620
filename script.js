@@ -28,9 +28,12 @@ $(document).ready(function() {
         }, 0 );
 
       // Update footer
-      $( api.column( 4 ).footer() ).html(
-        '$'+pageTotal +' ( $'+ total +' total)'
-      );
+      $(api.table().footer())
+        .find('th:nth-of-type(2)')
+        .each(function(index) {
+          var amount = index === 0 ? pageTotal : total;
+          $(this).text(`$${amount.toLocaleString('en-US')}`);
+        });
     }
   } );
 } );
